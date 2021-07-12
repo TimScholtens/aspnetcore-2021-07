@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DemoProject.Controllers
@@ -61,6 +62,7 @@ namespace DemoProject.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
+				Thread.Sleep(2000);
 				return View();
 			}
 
