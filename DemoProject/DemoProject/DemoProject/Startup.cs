@@ -1,6 +1,8 @@
+using DemoProject.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -15,17 +17,17 @@ namespace DemoProject
 		public void ConfigureServices(IServiceCollection services)
 		{
 			// dependency injection / globale instellingen
-
+			services.AddDbContext<SoccerContext>(options =>
+			{
+				options.UseSqlServer("Data Source=.\\SQLEXPRESS; Initial Catalog=soccerdb; Integrated Security=true;");
+			});
 
 			services.AddControllersWithViews(); // MVC
-
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
-
 			// voor iedere request
-
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
