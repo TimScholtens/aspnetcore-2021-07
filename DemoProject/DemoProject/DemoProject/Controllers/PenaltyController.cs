@@ -2,6 +2,8 @@
 using DemoProject.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,12 +27,24 @@ namespace DemoProject.Controllers
 
 			// action results: view, json, file, redirect
 			// web api: no content ok 
-			return View(context.Penalties.ToList());
+			return View(context.Penalties.Include(x => x.Player).ToList());
 		}
 
 		[HttpGet]
 		public IActionResult Create()
 		{
+			//ViewData["DataMessage"] = "Hallo daar viewdata!"; // magic string
+			//ViewBag.BagMessage = "Hallo daar viewbag!"; // magic property
+
+			// unmanaged resources
+			//dynamic bla = null;
+			//bla.DoeIets(14, 28, "hoi", "haha", new { });
+			ViewData["Players"] = context.Players.Select(x => new SelectListItem
+			{
+				Text = x.Name,
+				Value = x.Id.ToString()
+			}).ToList();
+
 			return View();
 		}
 

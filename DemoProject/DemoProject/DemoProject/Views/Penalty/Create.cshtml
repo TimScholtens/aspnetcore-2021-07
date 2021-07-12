@@ -10,12 +10,18 @@ tag helpers
 <script src="~/libs/jquery-validate/jquery.validate.js"></script>
 <script src="~/libs/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 
+
+ViewData 2: @ViewData["BagMessage"]<br>
+ViewBag 2:  @ViewBag.DataMessage
+
+
+
 <form method="post">
 	<ol>
 		<li>
 			<label for="input-name">Naam:</label>
-			<input id="input-name" asp-for="Name">
-			<span asp-validation-for="Name"></span>
+			<select id="input-name" asp-for="PlayerId" asp-items="@ViewBag.Players"></select>
+			<span asp-validation-for="PlayerId"></span>
 		</li>
 		<li>
 			<label for="input-scored">Gescoord?</label>

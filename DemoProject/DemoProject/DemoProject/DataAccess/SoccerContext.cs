@@ -12,6 +12,9 @@ namespace DemoProject.DataAccess
     {
 		public DbSet<PenaltyModel> Penalties { get; set; }
 
+		public DbSet<PlayerModel> Players { get; set; }
+
+		// zodat de startup config hieraan doorgegeven wordt
 		public SoccerContext(DbContextOptions options) : base(options)
 		{
 
