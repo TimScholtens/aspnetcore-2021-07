@@ -1,0 +1,36 @@
+﻿@model DemoProject.Models.PenaltyModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<h2>Penalty toevoegen</h2>
+
+
+tag helpers
+
+
+<form method="post">
+	<ol>
+		<li>
+			<label for="input-name">Naam:</label>
+			<input id="input-name" asp-for="Name">
+			<span asp-validation-for="Name"></span>
+		</li>
+		<li>
+			<label for="input-scored">Gescoord?</label>
+			<input id="input-scored" asp-for="Scored">
+			<span asp-validation-for="Scored"></span>
+		</li>
+		<li>
+			<label for="input-speed">Snelheid?</label>
+			<input id="input-speed" asp-for="Speed" step="0.1">
+			<span asp-validation-for="Speed"></span>
+		</li>
+		<li>
+			<label for="input-photo-face">Foto na penalty:</label>
+			<input id="input-photo-face" asp-for="PhotoFace">
+			<span asp-validation-for="PhotoFace"></span>
+		</li>
+		<li>
+			<button>Voeg penalty toe</button>
+		</li>
+	</ol>
+</form>

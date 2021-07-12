@@ -1,4 +1,5 @@
 ﻿using DemoProject.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,17 +9,10 @@ using System.Threading.Tasks;
 
 namespace DemoProject.Controllers
 {
-	
-    public class PenaltyController : Controller
-    {
-		
-		public IActionResult Index()
-		{
-			// view components
 
-			// action results: view, json, file, redirect
-			// web api: no content ok 
-			var penalties = new List<PenaltyModel>
+	public class PenaltyController : Controller
+	{
+		private static List<PenaltyModel> penalties = new List<PenaltyModel>
 			{
 				new PenaltyModel
 				{
@@ -46,7 +40,33 @@ namespace DemoProject.Controllers
 				}
 			};
 
+
+		public IActionResult Index()
+		{
+			// view components
+
+			// action results: view, json, file, redirect
+			// web api: no content ok 
 			return View(penalties);
+		}
+
+		[HttpGet]
+		public IActionResult Create()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public IActionResult Create(PenaltyModel newPenalty) // model binding
+		{
+			if (!ModelState.IsValid)
+			{
+				return View();
+			}
+
+			penalties.Add(newPenalty);
+			return RedirectToAction("Index");
+			//return Content($"{formData["nameq"]} schoot met {formData["speed"]}km/h");
 		}
 	}
 }
