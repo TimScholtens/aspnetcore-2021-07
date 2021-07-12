@@ -1,0 +1,43 @@
+﻿@model IEnumerable<DemoProject.Models.PenaltyModel>
+@*Razor view engine*@
+@*WebForms view engine*@
+
+
+<style>
+	td img {
+		max-width: 150px;
+	}
+</style>
+
+
+<h1>Penalty's</h1>
+
+@if (Model == null || Model.Count() == 0)
+{
+	<p>Nog geen penals genomen.</p>
+}
+else
+{
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Naam</th>
+				<th>Gescoord?</th>
+				<th>Snelheid</th>
+				<th>Gezicht</th>
+			</tr>
+		</thead>
+
+		@foreach (var penalty in Model)
+		{
+			<tr>
+				<td>@penalty.Id</td>
+				<td>@penalty.Name</td>
+				<td>@penalty.Scored</td>
+				<td>@penalty.Speed</td>
+				<td><img src="@penalty.PhotoFace"></td>
+			</tr>
+		}
+	</table>
+}
