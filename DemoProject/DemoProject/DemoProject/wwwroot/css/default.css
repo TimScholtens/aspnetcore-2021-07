@@ -1,0 +1,81 @@
+﻿body {
+	font-family: sans-serif;
+}
+
+td img {
+	max-width: 150px;
+}
+
+header {
+	font-family: 'Dancing Script', cursive;
+	display: flex;
+	align-items: center;
+}
+header img {
+	transform: translate(-170px, -25px);
+}
+header span {
+	transform: translate(-300px, 0);
+}
+
+
+/* CSS3: flexible boxes */
+nav ol {
+	display: flex;
+	justify-content: flex-end;
+}
+nav a {
+	background: lightgreen;
+	padding: 7px;
+	margin: 5px;
+	display: block;
+	text-decoration: none;
+	transition: 3s all ease;
+}
+nav a:hover { /* psuedo-class */
+	background: lightblue;
+	padding: 16px;
+	transform: rotate(10deg) scale(1.5);
+}
+
+
+h1, h2 {
+	font-weight: bold;
+	margin-bottom: 1.4rem;
+	font-family: 'Roboto', sans-serif;
+	border-left: 10px solid green;
+}
+h1 {
+	font-size: 1.5rem;
+}
+h2 {
+	font-size: 1.3rem;
+}
+
+td, th {
+	padding: 0.7rem;
+}
+th {
+	font-weight: bold;
+	background: #0075c3;
+	color: white;
+}
+tr:nth-child(even) {
+	background: lightblue;
+}
+tr:nth-child(odd) {
+	
+}
+
+footer {
+	background: lightgray;
+	padding: 7px;
+	margin-top: 2rem;
+}
+
+.class {
+
+}
+#id {
+
+}

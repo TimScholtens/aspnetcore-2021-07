@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- metadata -->
+	<title>Beste demoproject ooit</title>
+	<style>
+		/* niet lekker qua herbruikbaarheid */
+		/* SoC */
+		/* browser caching */
+
+	</style>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="~/css/reset.css">
+	<link rel="stylesheet" href="~/css/default.css">
+
+	@RenderSection("scripts", false)
+</head>
+
+<body>
+
+	<header>
+		<img src="https://lh3.googleusercontent.com/proxy/HxA-iUBzcnx_tINm7QsXSuxNJRuvE9Mc31Gns3Pu4zRQWvu87gj383Det0fyxdwJSf6sA_9uz9V7Us_EoXB5exlPb9ahde4mceUXf3LDSAneWK3wl6hk-iFJWQFl">
+		<span>Lorem ipsum dolor sit amet.</span>
+
+	</header>
+
+	<nav>
+		<ol>
+			<li><a href="/penalty/index">Penalty's</a></li>
+			<li><a href="/penalty/create">Penalty toevoegen</a></li>
+		</ol>
+	</nav>
+	
+	<main>
+		@RenderBody()
+	</main>
+
+	<footer>
+		&copy; JP ten Berge | Privacyshizzle | Disclaimer
+	</footer>
+</body>
+
+
+</html>

@@ -1,17 +1,17 @@
-﻿@model DemoProject.Models.PenaltyModel
+﻿@model PenaltyModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <h2>Penalty toevoegen</h2>
 
-
 tag helpers
 
-<script src="~/libs/jquery/jquery.js"></script>
-<script src="~/libs/jquery-validate/jquery.validate.js"></script>
-<script src="~/libs/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-
-
-ViewData 2: @ViewData["BagMessage"]<br>
+@section scripts {
+	<script src="~/libs/jquery/jquery.js"></script>
+	<script src="~/libs/jquery-validate/jquery.validate.js"></script>
+	<script src="~/libs/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+ViewData 2: @ViewData["BagMessage"]
+<br>
 ViewBag 2:  @ViewBag.DataMessage
 
 

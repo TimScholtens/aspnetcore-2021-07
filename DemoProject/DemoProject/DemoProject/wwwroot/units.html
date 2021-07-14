@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>units</title>
+
+	<style>
+		.pixels {
+			/* accessibility: houdt geen rekening met default instelling van browsert */
+			font-size: 16px;
+		}
+
+		.rems {
+			/* gebruik deze het meest */
+			font-size: 1.2rem;
+			background: lightblue;
+		}
+
+		.ems {
+			font-size: 1.2em;
+			background: lightgoldenrodyellow;
+		}
+
+		.vws {
+			/* accessibility zoomen niet mee */
+			font-size: 3vw; /* viewport width/height */
+		}
+
+
+		.container {
+			width: 70vw; /* dit is een ander verhaal qua a11y */
+		}
+	</style>
+</head>
+<body>
+
+
+	<p class="pixels">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque iaculis, quam euismod consequat tempor, quam eros volutpat lectus, et molestie lorem felis eget odio. Cras ultrices libero sit amet nunc consectetur, in imperdiet magna faucibus. Suspendisse lorem quam, fringilla ac condimentum ut, hendrerit a lectus. Vivamus et ullamcorper diam. Duis eget ultricies libero, eu lobortis ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin suscipit sodales lacus id vulputate. Nullam iaculis arcu ac massa feugiat, sit amet vulputate ligula pretium. Cras tincidunt elit vitae gravida volutpat.</p>
+	<p class="rems">
+		Lorem ipsum dolor sit amet,
+		<span class="rems">
+			consectetur adipiscing elit.
+			<span class="rems">
+				quam eros volutpat lectus, et molestie
+				<span class="rems">
+					Pellentesque iaculis, quam euismod consequat tempor
+					<span class="rems">lorem felis eget odio. Cras ultrices libero sit amet nunc consectetur, in imperdiet magna faucibus. Suspendisse lorem quam, fringilla ac condimentum ut, hendrerit a lectus. Vivamus et ullamcorper diam. Duis eget ultricies libero, eu lobortis ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin suscipit sodales lacus id vulputate. Nullam iaculis arcu ac massa feugiat, sit amet vulputate ligula pretium. Cras tincidunt elit vitae gravida volutpat.</span>
+				</span>
+			</span>
+		</span>
+
+
+
+	</p>
+	<p class="ems">
+		Lorem ipsum dolor sit amet,
+		<span class="ems">
+			consectetur adipiscing elit.
+			<span class="ems">
+				quam eros volutpat lectus, et molestie
+				<span class="ems">
+					Pellentesque iaculis, quam euismod consequat tempor
+					<span class="ems">lorem felis eget odio. Cras ultrices libero sit amet nunc consectetur, in imperdiet magna faucibus. Suspendisse lorem quam, fringilla ac condimentum ut, hendrerit a lectus. Vivamus et ullamcorper diam. Duis eget ultricies libero, eu lobortis ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin suscipit sodales lacus id vulputate. Nullam iaculis arcu ac massa feugiat, sit amet vulputate ligula pretium. Cras tincidunt elit vitae gravida volutpat.</span>
+				</span>
+			</span>
+		</span>
+
+
+
+	</p>
+
+
+	<p class="vws">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque iaculis, quam euismod consequat tempor, quam eros volutpat lectus, et molestie lorem felis eget odio. Cras ultrices libero sit amet nunc consectetur, in imperdiet magna faucibus. Suspendisse lorem quam, fringilla ac condimentum ut, hendrerit a lectus. Vivamus et ullamcorper diam. Duis eget ultricies libero, eu lobortis ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin suscipit sodales lacus id vulputate. Nullam iaculis arcu ac massa feugiat, sit amet vulputate ligula pretium. Cras tincidunt elit vitae gravida volutpat.</p>
+
+
+
+
+</body>
+</html>
