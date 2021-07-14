@@ -1,4 +1,5 @@
 using DemoProject.DataAccess;
+using DemoProject.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -20,8 +21,9 @@ namespace DemoProject
 			services.AddDbContext<SoccerContext>(options =>
 			{
 				options.UseSqlServer("Data Source=.\\SQLEXPRESS; Initial Catalog=soccerdb; Integrated Security=true;");
-			});
+			}, ServiceLifetime.Transient);
 
+			services.AddTransient<IPenaltyRepository, PenaltyRepository>();
 			services.AddControllersWithViews(); // MVC
 		}
 
@@ -40,6 +42,9 @@ namespace DemoProject
 			app.UseEndpoints(endpoints =>
 			{
 				// default route
+
+				//endpoints.MapControllerRoute("specifiek", "Iets/Bla", new { controller = "Iestsje", action = "sdklfjdslk" });
+
 				endpoints.MapControllerRoute("Default", "{controller}/{action}/{id?}");
 				//endpoints.MapControllers();
 			});

@@ -1,5 +1,6 @@
 ﻿using DemoProject.DataAccess;
 using DemoProject.Models;
+using DemoProject.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,19 +16,23 @@ namespace DemoProject.Controllers
 {
 	public class PenaltyController : Controller
 	{
+		// repository pattern
+
 		private SoccerContext context;
-		public PenaltyController(SoccerContext context)
+		private IPenaltyRepository penalRepo;
+		public PenaltyController(SoccerContext context, IPenaltyRepository penalRepo)
 		{
 			this.context = context;
+			this.penalRepo = penalRepo;
 		}
 
-		public IActionResult Index()
+		public async Task<IActionResult> Index()
 		{
 			// view components
 
 			// action results: view, json, file, redirect
 			// web api: no content ok 
-			return View(context.Penalties.Include(x => x.Player).ToList());
+			return View(await penalRepo.GetAllAsync());
 		}
 
 		[HttpGet]
@@ -49,7 +54,7 @@ namespace DemoProject.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Create(PenaltyModel newPenalty) // model binding
+		public async Task<IActionResult> Create(PenaltyModel newPenalty) // model binding
 		{
 			if (!ModelState.IsValid)
 			{
@@ -58,8 +63,7 @@ namespace DemoProject.Controllers
 			}
 
 			//context.Database.
-			context.Penalties.Add(newPenalty); // SQL injection is een stuk lastiger zo
-			context.SaveChanges();
+			await penalRepo.AddAsync(newPenalty);
 			return RedirectToAction("Index");
 			//return Content($"{formData["nameq"]} schoot met {formData["speed"]}km/h");
 		}
