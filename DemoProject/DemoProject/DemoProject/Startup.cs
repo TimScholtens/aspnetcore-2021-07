@@ -24,6 +24,7 @@ namespace DemoProject
 			}, ServiceLifetime.Transient);
 
 			services.AddTransient<IPenaltyRepository, PenaltyRepository>();
+			services.AddTransient<IPlayerRepository, PlayerRepository>();
 			services.AddControllersWithViews(); // MVC
 		}
 

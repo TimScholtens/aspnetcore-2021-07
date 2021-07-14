@@ -17,6 +17,11 @@ namespace DemoProject.Repositories
 			this.context = context;
 		}
 
+
+		// C# is pascalcase
+		// Java is camelcase
+
+
 		public async Task<IEnumerable<PenaltyModel>> GetAllAsync()
 		{
 			return await context.Penalties.Include(x => x.Player).ToListAsync();

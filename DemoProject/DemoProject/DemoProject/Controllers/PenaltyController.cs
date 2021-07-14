@@ -20,10 +20,11 @@ namespace DemoProject.Controllers
 
 		private SoccerContext context;
 		private IPenaltyRepository penalRepo;
-		public PenaltyController(SoccerContext context, IPenaltyRepository penalRepo)
+		private IPlayerRepository playerRepo;
+		public PenaltyController(IPenaltyRepository penalRepo, IPlayerRepository playerRepo)
 		{
-			this.context = context;
 			this.penalRepo = penalRepo;
+			this.playerRepo = playerRepo;
 		}
 
 		public async Task<IActionResult> Index()
@@ -36,7 +37,7 @@ namespace DemoProject.Controllers
 		}
 
 		[HttpGet]
-		public IActionResult Create()
+		public async Task<IActionResult> Create()
 		{
 			//ViewData["DataMessage"] = "Hallo daar viewdata!"; // magic string
 			//ViewBag.BagMessage = "Hallo daar viewbag!"; // magic property
@@ -44,11 +45,11 @@ namespace DemoProject.Controllers
 			// unmanaged resources
 			//dynamic bla = null;
 			//bla.DoeIets(14, 28, "hoi", "haha", new { });
-			ViewData["Players"] = context.Players.Select(x => new SelectListItem
+			ViewData["Players"] = (await playerRepo.GetAllAsync()).Select(x => new SelectListItem
 			{
 				Text = x.Name,
 				Value = x.Id.ToString()
-			}).ToList();
+			});
 
 			return View();
 		}
@@ -58,7 +59,6 @@ namespace DemoProject.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				Thread.Sleep(2000);
 				return View();
 			}
 
