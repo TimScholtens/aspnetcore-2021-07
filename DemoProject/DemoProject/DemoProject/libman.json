@@ -16,6 +16,11 @@
 			"library": "jquery-validation-unobtrusive@3.2.12",
 			"destination": "wwwroot/libs/jquery-validation-unobtrusive",
 			"files": [ "jquery.validate.unobtrusive.js" ]
+		},
+		{
+			"library": "gridjs@5.0.2",
+			"destination": "wwwroot/libs/gridjs/",
+			"files": ["gridjs.js", "gridjs.umd.js"]
 		}
 	]
 }

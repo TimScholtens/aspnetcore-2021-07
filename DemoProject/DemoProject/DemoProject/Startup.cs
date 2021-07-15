@@ -39,7 +39,6 @@ namespace DemoProject
 				// JSON.parse()
 				// $id: 6
 				// $ref: 6
-
 			});
 
 			services.AddCors();
@@ -48,6 +47,15 @@ namespace DemoProject
 			{
 				options.SwaggerDoc("v1", new OpenApiInfo { Title = "Mijn APIs", Version = "v1" });
 			});
+
+			services.AddMemoryCache();
+
+			services.AddSession();
+
+			//services.AddDistributedMemoryCache()
+
+			//services.AddRedis
+
 
 			// Swagger??
 			// - in de browser zie je al je APIs
@@ -78,6 +86,7 @@ namespace DemoProject
 				options.WithOrigins("https://localhost:44375").AllowAnyMethod().AllowAnyHeader().AllowCredentials();
 			});
 
+			app.UseSession(); // leest de sesion cookie uit
 
 			app.UseStaticFiles();
 
