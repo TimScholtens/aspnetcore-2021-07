@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace DemoProject
 			services.AddTransient<IPlayerRepository, PlayerRepository>();
 			services.AddControllersWithViews().AddNewtonsoftJson(options =>
 			{
-				options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+				//options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
 
 				//options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver
 
@@ -40,8 +41,19 @@ namespace DemoProject
 				// $ref: 6
 
 			});
-				
-				
+
+			services.AddCors();
+
+			services.AddSwaggerGen(options =>
+			{
+				options.SwaggerDoc("v1", new OpenApiInfo { Title = "Mijn APIs", Version = "v1" });
+			});
+
+			// Swagger??
+			// - in de browser zie je al je APIs
+			// - API-documentatietool
+			// - clients kan laten genereren  NSwag
+
 			//	.AddJsonOptions(options =>
 			//{
 			//	options.JsonSerializerOptions
@@ -54,7 +66,18 @@ namespace DemoProject
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
+
+				app.UseSwagger();
+
+				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mijn APIs v1"));
 			}
+
+			app.UseCors(options =>
+			{
+				// wees iets specifieker in productie
+				options.WithOrigins("https://localhost:44375").AllowAnyMethod().AllowAnyHeader().AllowCredentials();
+			});
+
 
 			app.UseStaticFiles();
 
@@ -67,8 +90,9 @@ namespace DemoProject
 				//endpoints.MapControllerRoute("specifiek", "Iets/Bla", new { controller = "Iestsje", action = "sdklfjdslk" });
 
 				endpoints.MapControllerRoute("Default", "{controller}/{action}/{id?}");
-				//endpoints.MapControllers();
+				endpoints.MapControllers();
 			});
 		}
 	}
 }
+

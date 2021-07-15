@@ -11,6 +11,7 @@ namespace DemoProject.APIs
     [Route("api/movie")]
     public class MovieApi : ControllerBase
     {
+        [HttpGet]
         public IEnumerable<MovieModel> Get()
 		{
             var drno = new MovieModel { Title = "James Bond - Dr. No", ReleaseDate = new DateTime(1962, 4, 6, 12, 0, 0), Actors = new List<ActorModel>() };

@@ -1,0 +1,45 @@
+﻿@page "/fetchdata"
+@inject HttpClient Http
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (Penalties == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Penalties)
+            {
+                <tr>
+                    <td>@p.Player.Name</td>
+                    <td>@p.Speed</td>
+                    <td>@p.Scored</td>
+                    <td><img src="@p.PhotoFace"></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+	private ICollection<PenaltyModel> Penalties;
+
+	protected override async Task OnInitializedAsync()
+	{
+		var client = new swaggerClient("http://localhost:3589/", Http);
+		Penalties = await client.PenaltyAllAsync();
+	}
+}
