@@ -213,13 +213,108 @@ wanneer kies ik ergens voor?
   => support?
 - features
 
+## REST
+
+REpresentational State Transfer - 2000 - 2010
+
+SOAP
+- XML
+- Uitdrukkingsvrijheid
+
+soap envelope body
+
+
+XSRF
+Public-facing API
+
+browser HTTP header:
+
+Accept: application/json, application/xml, text/html, outlook/v-card
+
+HTTP verbs
+
+- GET	  ophalen
+- POST	  toevoegen    /wijzigen
+- PUT	  wijzigen     /toevoegen
+- DELETE  verwijderen
+- PATCH	  deel wijzigen
+
+POST  /api/car     { make: '...', model: '...' }
+POST  /api/car     { make: '...', model: '...' }
+POST  /api/car     { make: '...', model: '...' }
+POST  /api/car     { make: '...', model: '...' }
+POST  /api/car     { make: '...', model: '...' }
+POST  /api/car     { make: '...', model: '...' }
+
+
+PUT   /api/car/156    { make: '...', model: '...' }
+PUT   /api/car/156    { make: '...', model: '...' }
+PUT   /api/car/156    { make: '...', model: '...' }
+PUT   /api/car/156    { make: '...', model: '...' }
+PUT   /api/car/156    { make: '...', model: '...' }
+PUT   /api/car/156    { make: '...', model: '...' }
+
+idempotency
+
+processen
+POST /api/rijbewijs-aanvraag
 
 
 
+REST maturity levels - RESTful
+
+level 0 - swamp of pox
+level 1 - resources
+level 2 - verbs
+level 3 - media controls  (hateos)
+
+/api/car
+[
+	{
+		make: '...',
+		model: '...',
+		links: [
+			{
+				details: '/api/car/15'
+			}
+		]
+	}
+]
+
+
+HTTP-statescodessen:
 
 
 
+2xx - Success
+- 200 OK
+- 201 Created      (POST)
+- 204 No Content   (DELETE)
 
+3xx - redirects
+- 301/302 temporary/permanent
 
+4xx - client error
+- 400 Bad Request - validatiemechanisme
+- 401/403 unauthorized/forbidden
+- 404 Not Found
+- 405 Method Not Allowed  (POST waar geen POST-ondersteuning zit)
+- 415 Mediatype not suppoed (ik stuur XML op, maar server ondersteunt geen XML)
+- 418 I'm a teapot
 
+5xx - server error
+- 500 Internal Server Error (exception)
+- 501 Gateway error
 
+ASP.NET Core 1.0 - Newtonsoft.Json
+             1.1 - Newtonsoft.Json
+             2.0 - Newtonsoft.Json
+             2.1 - Newtonsoft.Json
+             3.0 - System.Text.Json zonder self-referencing loop support
+             5 - System.Text.Json aardig compleet.
+
+### Swagger
+
+- in de browser zie je al je APIs (SwaggerUI)
+- API-documentatietool
+- clients kan laten genereren => NSwag
