@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,26 @@ namespace DemoProject
 
 			services.AddTransient<IPenaltyRepository, PenaltyRepository>();
 			services.AddTransient<IPlayerRepository, PlayerRepository>();
-			services.AddControllersWithViews(); // MVC
+			services.AddControllersWithViews().AddNewtonsoftJson(options =>
+			{
+				options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+
+				//options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver
+
+				// datum en tijd
+
+				// this is not default JSON
+				// JSON.parse()
+				// $id: 6
+				// $ref: 6
+
+			});
+				
+				
+			//	.AddJsonOptions(options =>
+			//{
+			//	options.JsonSerializerOptions
+			//}); // MVC
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

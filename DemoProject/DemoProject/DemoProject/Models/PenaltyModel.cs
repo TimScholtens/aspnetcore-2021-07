@@ -12,6 +12,7 @@ namespace DemoProject.Models
     {
 		public int Id { get; set; }
 
+		[Required]
 		public int PlayerId { get; set; }
 
 		public PlayerModel Player { get; set; }
@@ -19,8 +20,10 @@ namespace DemoProject.Models
 		[Range(1, 200)]
 		public decimal Speed { get; set; } // kilometers per hour
 
+		[Required]
 		public bool Scored { get; set; }
 
+		[Required]
 		public string PhotoFace { get; set; }
 	}
 }

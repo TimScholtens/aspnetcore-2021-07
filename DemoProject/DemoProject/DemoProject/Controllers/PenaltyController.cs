@@ -17,8 +17,6 @@ namespace DemoProject.Controllers
 	public class PenaltyController : Controller
 	{
 		// repository pattern
-
-		private SoccerContext context;
 		private IPenaltyRepository penalRepo;
 		private IPlayerRepository playerRepo;
 		public PenaltyController(IPenaltyRepository penalRepo, IPlayerRepository playerRepo)
