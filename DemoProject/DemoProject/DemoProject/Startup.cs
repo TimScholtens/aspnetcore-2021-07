@@ -40,6 +40,10 @@ namespace DemoProject
 				// $id: 6
 				// $ref: 6
 			});
+			//	.AddJsonOptions(options =>
+			//{
+			//	options.JsonSerializerOptions
+			//}); // MVC
 
 			services.AddCors();
 
@@ -55,17 +59,6 @@ namespace DemoProject
 			//services.AddDistributedMemoryCache()
 
 			//services.AddRedis
-
-
-			// Swagger??
-			// - in de browser zie je al je APIs
-			// - API-documentatietool
-			// - clients kan laten genereren  NSwag
-
-			//	.AddJsonOptions(options =>
-			//{
-			//	options.JsonSerializerOptions
-			//}); // MVC
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
