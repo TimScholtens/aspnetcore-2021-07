@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="js/script.js"></script> -->
+    <script src="js/dom.js"></script>
+    <style>
+        img {
+            max-width: 15vw;
+        }
+    </style>
+</head>
+<body>
+    
+    <button onclick="addPenalty();">Voeg penalty toe</button>
+
+	<table id="penalties">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Naam</th>
+				<th>Gescoord?</th>
+				<th>Snelheid</th>
+				<th>Gezicht</th>
+			</tr>
+		</thead>
+        <tbody>
+            <template id="template-penalty">
+                <tr>
+                    <td class="id"></td>
+                    <td class="name"></td>
+                    <td class="scored"></td>
+                    <td class="speed"></td>
+                    <td><img class="photoFace"></td>
+                </tr> 
+            </template>
+			<tr>
+				<td>1</td>
+				<td>Marcus Rashford</td>
+				<td>False</td>
+				<td>145.40</td>
+				<td><img src="https://static.timesofisrael.com/www/uploads/2021/07/AP21192809451607.jpg"></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Jadon Sancho</td>
+				<td>False</td>
+				<td>174.10</td>
+				<td><img src="https://e0.365dm.com/21/07/768x432/skysports-jadon-sancho-miss_5444467.jpg?20210711230603"></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Bukayo Saka</td>
+				<td>False</td>
+				<td>12.80</td>
+				<td><img src="https://i2-prod.football.london/incoming/article21028279.ece/ALTERNATES/s1200c/0_Saka.jpg"></td>
+			</tr>
+        </tbody>
+	</table>
+
+</body>
+</html>
