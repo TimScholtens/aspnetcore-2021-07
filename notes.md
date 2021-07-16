@@ -318,3 +318,77 @@ ASP.NET Core 1.0 - Newtonsoft.Json
 - in de browser zie je al je APIs (SwaggerUI)
 - API-documentatietool
 - clients kan laten genereren => NSwag
+
+## Authenticatie/autorisatie
+
+identificatie: wie ben je?
+authenticatie: bewijs dat je dat bent
+autorisatie: wat mag je?
+
+ASP.NET 2.0 - Membership Providers
+
+SqlMembershipProvider
+SimpleMembershipProvider
+UniversalMembershipProvider
+
+Identity
+
+## Security
+
+geheim123
+jansen
+femke
+nesnaj86
+
+passphrases
+
+dictionary attacks
+
+deze website is 110% beter dan de vorige
+
+
+Open Web Application Security Project
+- top 10
+
+- minimum password length
+
+- SQL injection
+- XSS           .innerHTML
+  - stored XSS
+  - reflected XSS
+
+       gastenboek forum
+       @message.content <strong>bla</strong>
+       <script>
+
+- XSRF    - cross site request forgery
+- HSTS / HTTPS
+
+  => HTTP Strict Transport Security
+
+
+- social engineering
+- wifi
+
+
+
+SQL injection?
+```cs
+command.CommandText = "SELECT * FROM klant WHERE id = 1 OR 1=1;";
+```
+id = 1; DROP TABLE klant;
+
+context.Klant.Where(x => x.Id == id)
+
+
+## Realtime communicatie
+
+- dingen meten?
+  => dashboard
+- IoT - de over is voorverwarmd
+- chat - ideale voorbeeld
+- beursinformatie
+- multiplayer gaming
+- thuisbezorgd/domino's
+
+
