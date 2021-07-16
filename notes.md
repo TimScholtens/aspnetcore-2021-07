@@ -392,3 +392,72 @@ context.Klant.Where(x => x.Id == id)
 - thuisbezorgd/domino's
 
 
+## Docker
+
+Deployennnnnn
+
+- standalone:
+  server ASP.NET Core
+
+- Azure
+
+- IIS
+  folder deploy
+  + IIS web site
+
+- Docker
+  - een soort host..provider
+  - runt op docker engine
+  - dockerfile met template
+  - image die je kan hosten
+  - container
+  - linux containers en windows containers
+  - komt vaak terug bij CI/CD
+
+
+"containerization" van je software
+
+installatiehandleidingen
+
+- ik vergat wel iets
+- zij zagen iets over het hoofd
+
+Ontwikkel-Test-Acceptatie-Preproductie-Productie
+
+
+docker ps     - containers
+docker images
+docker rm
+docker stop
+docker rmi
+docker build  - dockerfile
+docker run
+docker start
+
+
+docker push // ontwikkelaar
+docker pull // technisch beheerder/deployer
+docker run
+
+orchestration
+
+docker-compose
+kubernetes (k8s)
+
+
+GitHub - broncode
+Docker Hub - docker images
+
+NuGet - .NET packages
+npm - javascript packages
+
+
+class  -  image
+
+new instantie  -  new container
+
+
+
+JP: docker push
+Lucas: docker pull
+Lucas: docker run jpimage
