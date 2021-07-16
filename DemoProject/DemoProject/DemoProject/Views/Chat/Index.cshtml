@@ -1,0 +1,47 @@
+﻿<h2>Chat</h2>
+
+<form onsubmit="say(); return false;">
+	<input id="input-name" placeholder="Je naam">
+	<input id="input-message" placeholder="Je bericht">
+	<button>Zeg!</button>
+</form>
+
+<ol id="chat-messages">
+	<template id="template-chat-message">
+		<li>
+			<strong class="name"></strong>:
+			<span class="message"></span>
+		</li>
+	</template>
+</ol>
+
+<script>
+	// use external file next time
+
+	var connection = new signalR.HubConnectionBuilder()
+		.withUrl('http://localhost:3589/chatHub')
+		.configureLogging(signalR.LogLevel.Warning)
+		.build();
+
+	connection.on('message', (name, message) => {
+		let template = document.querySelector('#template-chat-message').content;
+
+		let clone = template.cloneNode(true);
+
+		clone.querySelector('.name').innerText = name;
+		clone.querySelector('.message').innerText = message;
+
+		document.querySelector('#chat-messages').appendChild(clone);
+	});
+
+	connection.start()
+		.then(() => console.log('Geopend!'))
+		.catch(err => console.error('Oh-oh', err));
+
+	function say() {
+		let name = document.querySelector('#input-name').value;
+		let message = document.querySelector('#input-message').value;
+		console.log('sending:', name, message);
+		connection.send('Send', name, message);
+	}
+</script>

@@ -14,6 +14,8 @@ namespace DemoProject.Repositories
 		private SoccerContext context;
 		public PenaltyRepository(SoccerContext context)
 		{
+			// performance
+			//context.Database.ExecuteSqlRaw("")
 			this.context = context;
 		}
 

@@ -1,4 +1,5 @@
 using DemoProject.DataAccess;
+using DemoProject.Hubs;
 using DemoProject.Models;
 using DemoProject.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -64,6 +65,8 @@ namespace DemoProject
 			//services.AddDistributedMemoryCache()
 
 			//services.AddRedis
+
+			services.AddSignalR();
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -77,6 +80,12 @@ namespace DemoProject
 
 				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mijn APIs v1"));
 			}
+			else
+			{
+				app.UseHsts();
+			}
+
+			app.UseHttpsRedirection();
 
 			app.UseCors(options =>
 			{
@@ -94,6 +103,9 @@ namespace DemoProject
 
 			app.UseEndpoints(endpoints =>
 			{
+
+				endpoints.MapHub<ChatHub>("/chatHub");
+
 				// default route
 
 				//endpoints.MapControllerRoute("specifiek", "Iets/Bla", new { controller = "Iestsje", action = "sdklfjdslk" });

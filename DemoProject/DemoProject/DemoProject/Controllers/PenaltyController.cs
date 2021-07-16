@@ -53,6 +53,7 @@ namespace DemoProject.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Create(PenaltyModel newPenalty) // model binding
 		{
 			if (!ModelState.IsValid)

@@ -43,5 +43,11 @@ namespace DemoProject.Controllers
 
             return nu.Value.ToLongTimeString();
 		}
+
+        public IActionResult Security()
+		{
+            ViewData["Message"] = "<script>alert('q');</script> hoi";
+            return View();
+		}
     }
 }

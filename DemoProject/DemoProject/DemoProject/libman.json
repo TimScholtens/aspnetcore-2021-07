@@ -20,7 +20,12 @@
 		{
 			"library": "gridjs@5.0.2",
 			"destination": "wwwroot/libs/gridjs/",
-			"files": ["gridjs.js", "gridjs.umd.js"]
+			"files": [ "gridjs.js", "gridjs.umd.js" ]
+		},
+		{
+			"library": "microsoft-signalr@5.0.8",
+			"destination": "wwwroot/libs/signalr/",
+			"files": ["signalr.js"]
 		}
 	]
 }
