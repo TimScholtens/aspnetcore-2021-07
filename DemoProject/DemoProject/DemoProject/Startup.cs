@@ -1,8 +1,10 @@
 using DemoProject.DataAccess;
+using DemoProject.Models;
 using DemoProject.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,8 +24,11 @@ namespace DemoProject
 			// dependency injection / globale instellingen
 			services.AddDbContext<SoccerContext>(options =>
 			{
-				options.UseSqlServer("Data Source=.\\SQLEXPRESS; Initial Catalog=soccerdb; Integrated Security=true;");
+				options.UseSqlServer("Data Source=.; Initial Catalog=soccerdb; Integrated Security=true;");
 			}, ServiceLifetime.Transient);
+
+			services.AddIdentity<FanUserModel, IdentityRole>().AddEntityFrameworkStores<SoccerContext>();
+
 
 			services.AddTransient<IPenaltyRepository, PenaltyRepository>();
 			services.AddTransient<IPlayerRepository, PlayerRepository>();
@@ -78,6 +83,8 @@ namespace DemoProject
 				// wees iets specifieker in productie
 				options.WithOrigins("https://localhost:44375").AllowAnyMethod().AllowAnyHeader().AllowCredentials();
 			});
+
+			app.UseAuthentication(); // leest de identity cookie uit
 
 			app.UseSession(); // leest de sesion cookie uit
 

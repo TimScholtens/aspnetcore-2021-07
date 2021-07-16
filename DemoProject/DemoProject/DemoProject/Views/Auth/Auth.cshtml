@@ -1,0 +1,20 @@
+﻿<h2>Authenticatie</h2>
+
+Status: @ViewData["Status"]
+
+<hr>
+@if (!User.Identity.IsAuthenticated)
+{
+	<p>Niet ingelogd</p>
+}
+else
+{
+	<p>Ingelogd als: @User.Identity.Name</p>
+}
+
+<hr>
+
+<a href="/auth/donothing">Doe niks</a> |
+<a href="/auth/register">Registreer</a> |
+<a href="/auth/login">Log in</a> |
+<a href="/auth/logout">Log uit</a>

@@ -1,4 +1,5 @@
 ﻿using DemoProject.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DemoProject.DataAccess
 {
-    public class SoccerContext : DbContext
+    public class SoccerContext : IdentityDbContext<FanUserModel>
     {
 		public DbSet<PenaltyModel> Penalties { get; set; }
 
